@@ -120,7 +120,7 @@ namespace ApplesGame
             break;
         case GameState::Playing:
 
-            if (game.snake.segments.size() == (NUMBER_CELLS * NUMBER_CELLS) - 1)
+            if (game.snake.segments.size() == (NUMBER_CELLS * NUMBER_CELLS) - 2)
             {
                 game.isWin = true;
                 PushGameState(game, GameState::GameOver);

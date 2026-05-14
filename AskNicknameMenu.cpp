@@ -77,7 +77,7 @@ namespace ApplesGame
             }
         }
 
-        if (event.type == sf::Event::TextEntered)
+        if (event.type == sf::Event::TextEntered && askNicknameMenu.selectedOptionKey == AskNicknameMenuOptionKey::Yes)
         {
             if (askNicknameMenu.nicknameInput == INPUT_PLACEHOLDER)
             {
