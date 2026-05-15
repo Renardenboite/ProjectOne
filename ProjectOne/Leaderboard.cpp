@@ -8,7 +8,7 @@ namespace ApplesGame
     void AddItemToLeaderboard(Game& game)
     {
         const auto playerName = game.UI.askNicknameMenu.nicknameInput.isEmpty() ? L"XYZ" : game.UI.askNicknameMenu.nicknameInput.toWideString();
-
+        
         auto& leaderboard = game.leaderboard.array;
         leaderboard.push_back({ playerName, game.score });
 

@@ -120,7 +120,7 @@ namespace ApplesGame
             break;
         case GameState::Playing:
 
-            if (game.snake.segments.size() == NUMBER_CELLS * NUMBER_CELLS)
+            if (game.snake.segments.size() == (NUMBER_CELLS * NUMBER_CELLS) - 2)
             {
                 game.isWin = true;
                 PushGameState(game, GameState::GameOver);
@@ -139,9 +139,17 @@ namespace ApplesGame
                     game.assets.death.play();
                     PushGameState(game, GameState::GameOver);
 
-                    if (game.score > 0 && (game.leaderboard.array.empty() || game.score > std::prev(game.leaderboard.array.end())->score))
+                    if (game.score > 0)
                     {
-                        PushGameState(game, GameState::AskNickname);
+                        if (game.leaderboard.array.size() > 10 && game.score > std::prev(game.leaderboard.array.end())->score)
+                        {
+                            PushGameState(game, GameState::AskNickname);
+                        }
+
+                        else if (game.leaderboard.array.size() < 10)
+                        {
+                            PushGameState(game, GameState::AskNickname);
+                        }                        
                     }
 
                     break;

@@ -55,7 +55,7 @@ namespace ApplesGame
     {
         auto& askNicknameMenu = game.UI.askNicknameMenu;
 
-        if (event.type == sf::Event::KeyPressed)
+        if (event.type == sf::Event::KeyPressed) //
         {
             if (event.key.code == sf::Keyboard::Enter)
             {
@@ -77,7 +77,7 @@ namespace ApplesGame
             }
         }
 
-        if (event.type == sf::Event::TextEntered)
+        if (event.type == sf::Event::TextEntered && askNicknameMenu.selectedOptionKey == AskNicknameMenuOptionKey::Yes)
         {
             if (askNicknameMenu.nicknameInput == INPUT_PLACEHOLDER)
             {
