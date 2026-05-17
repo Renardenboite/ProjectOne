@@ -16,6 +16,7 @@
         HUDView.setViewport(sf::FloatRect(0.f, 0.0f, 1.f, HUD_VIEW_PERCENT));
 
         Game game;
+        Snake snake;
         InitGame(game);
 
         sf::Clock gameClock;
@@ -113,7 +114,7 @@
                 }
             }
 
-            UpdateGame(game, deltaTime);
+            UpdateGame(game, deltaTime, snake);
 
             window.clear();
 

@@ -37,6 +37,7 @@ namespace ApplesGame
 
         unsigned score = 0;
         bool isWin = false;
+        unsigned availableCoords = 0;
 
         DifficultyLevel difficulty;
 
@@ -46,6 +47,8 @@ namespace ApplesGame
         Leaderboard leaderboard;
     };
 
+    struct Snake;
+
     void ResetGameState(Game& game);
     void PushGameState(Game& game, const GameState& state);
     void PopGameState(Game& game);
@@ -53,6 +56,6 @@ namespace ApplesGame
 
     void ResetGame(Game& game);
     void InitGame(Game& game);
-    void UpdateGame(Game& game, const float& deltaTime);
+    void UpdateGame(Game& game, const float& deltaTime, Snake& snake);
     void DrawGame(sf::RenderWindow& window, const sf::View& HUDView, const Game& game);
 }
