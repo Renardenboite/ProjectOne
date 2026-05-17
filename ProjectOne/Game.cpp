@@ -109,7 +109,7 @@ namespace ApplesGame
     }
 
 
-    void UpdateGame(Game& game, const float& deltaTime)
+    void UpdateGame(Game& game, const float& deltaTime, Snake& snake)
     {
         const auto& gameState = GetCurrentGameState(game);
         const float computedDistance = game.difficulty.value.snakeSpeed * deltaTime;
@@ -120,7 +120,8 @@ namespace ApplesGame
             break;
         case GameState::Playing:
 
-            if (game.snake.segments.size() == (NUMBER_CELLS * NUMBER_CELLS) - 2)
+            
+            if ((NUMBER_CELLS - 2) * (NUMBER_CELLS - 2) - snake.segments.size() <= 1) // (game.snake.segments.size() == (NUMBER_CELLS * NUMBER_CELLS) - 2)
             {
                 game.isWin = true;
                 PushGameState(game, GameState::GameOver);
@@ -141,7 +142,7 @@ namespace ApplesGame
 
                     if (game.score > 0)
                     {
-                        if (game.leaderboard.array.size() > 10 && game.score > std::prev(game.leaderboard.array.end())->score)
+                        if (game.leaderboard.array.size() >= 10 && game.score > std::prev(game.leaderboard.array.end())->score)
                         {
                             PushGameState(game, GameState::AskNickname);
                         }
